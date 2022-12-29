@@ -1,0 +1,33 @@
+package MapsLambdaAndStreamAPI;
+
+import java.util.*;
+
+public class P01CountRealNumbers {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arrWords=line.split(" ");
+        Map<Integer,Integer> myMap=new TreeMap<>();
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int i=0;i<arrWords.length;i++){
+            arr.add(Integer.parseInt(arrWords[i]));
+        }
+        int counter=1;
+        for(int i=0;i<arr.size();i++) {
+            for (int j = i + 1; j < arr.size(); j++) {
+                if (Objects.equals(arr.get(i), arr.get(j))){
+                    counter++;
+                    arr.remove(j);
+                    j=j-1;
+                }
+            }
+            myMap.put(arr.get(i),counter);
+            arr.remove(i);
+            i=i-1;
+            counter=1;
+        }
+        for(Map.Entry<Integer,Integer> entry:myMap.entrySet()){
+            System.out.printf("%d -> %d%n",entry.getKey(),entry.getValue());
+        }
+    }
+}
