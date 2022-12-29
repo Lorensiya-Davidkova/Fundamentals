@@ -1,0 +1,30 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P01DayOfWeek {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        //Exercise 1-> Day of Week
+        int number=Integer.parseInt(scanner.nextLine());
+        String[] arr_of_days={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+        if(number==1){
+            System.out.println(arr_of_days[0]);
+        }else if(number==2){
+            System.out.println(arr_of_days[1]);
+        }else if(number==3){
+            System.out.println(arr_of_days[2]);
+        }else if(number==4){
+            System.out.println(arr_of_days[3]);
+        }else if(number==5){
+            System.out.println(arr_of_days[4]);
+        }else if(number==6){
+            System.out.println(arr_of_days[5]);
+        }else if(number==7){
+            System.out.println(arr_of_days[6]);
+        }else{
+            System.out.println("Invalid day!");
+        }
+
+    }
+}
