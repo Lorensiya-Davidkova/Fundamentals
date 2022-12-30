@@ -1,0 +1,39 @@
+package MapsLambdaAndStreamAPI;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class P03CountCharsInAString {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String input=scanner.nextLine();
+        ArrayList<Character> line=new ArrayList<>();
+        Map<Character,Integer> myMap=new LinkedHashMap<>();
+        for(int i=0;i<input.length();i++){
+            if(input.charAt(i)!=32){
+                line.add(input.charAt(i));
+            }
+        }
+
+        int counter=1;
+        for(int i=0;i<line.size();i++){
+            for(int j=i+1;j<line.size();j++){
+                if(line.get(i)==line.get(j)){
+                    counter++;
+                    line.remove(j);
+                    j=j-1;
+                }
+            }
+            myMap.put(line.get(i),counter);
+            line.remove(i);
+            i=i-1;
+            counter=1;
+        }
+
+        for(Map.Entry<Character,Integer> entry:myMap.entrySet()){
+            System.out.printf("%c -> %d%n",entry.getKey(),entry.getValue());
+        }
+    }
+}
