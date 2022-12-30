@@ -1,0 +1,20 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P03Elevator {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int number_of_people=Integer.parseInt(scanner.nextLine());
+        int capacity_of_elevator=Integer.parseInt(scanner.nextLine());
+        int resultInt=number_of_people/capacity_of_elevator;
+        double resultDouble=number_of_people/(double)capacity_of_elevator;
+        if(resultDouble-resultInt>0){
+            resultInt++;
+        }else if(resultDouble==resultInt){
+            resultInt+=0;
+        }
+        System.out.println(resultInt);
+
+    }
+}
