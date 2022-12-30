@@ -1,0 +1,46 @@
+package MapsLambdaAndStreamAPI;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+import java.util.*;
+
+public class P02WordSynonyms {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int n=Integer.parseInt(scanner.nextLine());
+        LinkedHashMap<String, ArrayList<String>> Map=new LinkedHashMap<>();
+        for(int i=0;i<n;i++) {
+            String word = scanner.nextLine();
+            String synonym = scanner.nextLine();
+            Map.putIfAbsent(word, new ArrayList<>());//това се изпълнява само когато липсва!-> ако липсва, генерира нов елемент(с ключ думата) и value(нов масив)
+            Map.get(word).add(synonym);
+        }
+            /*int ednakviWordAndKey=0;
+
+            for(Map.Entry<String,ArrayList<String>> entry:Map.entrySet()){
+                if(entry.getKey().equals(word)){
+                    entry.getValue().add(synonym);
+                    ednakviWordAndKey++;
+                    break;
+                }
+            }
+            if(ednakviWordAndKey==0){
+                ArrayList<String> synonyms=new ArrayList<>();
+                synonyms.add(synonym);
+                Map.put(word,synonyms);
+            }
+        }*/
+        for (Map.Entry<String, ArrayList<String>> entry : Map.entrySet()) {
+            System.out.printf("%s - ", entry.getKey());
+            for (int j = 0; j < entry.getValue().size(); j++) {
+                if (j == entry.getValue().size() - 1) {
+                    System.out.printf("%s", entry.getValue().get(j));
+                } else {
+                    System.out.printf("%s, ", entry.getValue().get(j));
+                }
+            }
+            System.out.println();
+        }
+    }
+}
