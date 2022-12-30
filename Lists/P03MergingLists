@@ -1,0 +1,57 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P03MergingLists {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line1=scanner.nextLine();
+        String[] arrWords1=line1.split(" ");
+        int[] arrNumber1=new int[arrWords1.length];
+        for(int i=0;i< arrWords1.length;i++){
+            int num=Integer.parseInt(arrWords1[i]);
+            arrNumber1[i]=num;
+        }
+        String line2=scanner.nextLine();
+        String[] arrWords2=line2.split(" ");
+        int[] arrNumber2=new int[arrWords2.length];
+        for(int i=0;i<arrWords2.length;i++){
+            int num=Integer.parseInt(arrWords2[i]);
+            arrNumber2[i]=num;
+        }
+        ArrayList<Integer> arr=new ArrayList<>();
+        int index1=0;
+        int index2=0;
+        for(int i=0;i<arrNumber1.length+arrNumber2.length;i++){
+            if(index1>arrNumber1.length-1||index2>arrNumber2.length-1){
+                if(arrNumber1.length> arrNumber2.length){
+                    for(int j=index1;j<arrNumber1.length;j++){
+                        arr.add(arrNumber1[j]);
+                    }
+                    break;
+                }else if(arrNumber1.length< arrNumber2.length){
+                    for(int k=index2;k<arrNumber2.length;k++){
+                        arr.add(arrNumber2[k]);
+                    }
+                    break;
+                }
+            }else{
+                if(i%2==0){
+                    arr.add(arrNumber1[index1]);
+                    index1++;
+                }else{
+                    arr.add(arrNumber2[index2]);
+                    index2++;
+                }
+            }
+        }
+        if(arrNumber1.length==arrNumber2.length){
+            arr.add(arrNumber2[arrNumber2.length-1]);
+        }
+        for(int i=0;i<arr.size();i++){
+            System.out.print(arr.get(i)+" ");
+        }
+
+    }
+}
