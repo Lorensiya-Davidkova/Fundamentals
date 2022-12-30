@@ -1,0 +1,18 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P02SumDigits {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int number=Integer.parseInt(scanner.nextLine());
+        int sum_of_digits=0;
+        while(number>0){
+            int cifra=number%10;
+            sum_of_digits=sum_of_digits+cifra;
+            number=number/10;
+        }
+        System.out.println(sum_of_digits);
+
+    }
+}
