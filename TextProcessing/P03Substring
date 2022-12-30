@@ -1,0 +1,19 @@
+package TextProcessing;
+
+import java.util.Scanner;
+
+public class P03Substring {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String key = scanner.nextLine();
+        String word = scanner.nextLine();
+        do {
+            if (word.contains(key)) {
+                word = word.replaceAll(key, "");
+            } else {
+                break;
+            }
+        } while (true);
+        System.out.println(word);
+    }
+}
