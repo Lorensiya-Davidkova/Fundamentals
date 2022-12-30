@@ -1,0 +1,41 @@
+package ObjectsAndClasses;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P03OpinionPoll {
+    public static class Person {
+        private String name;
+        private int age;
+
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public int getAge() {
+            return this.age;
+        }
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int n=Integer.parseInt(scanner.nextLine());
+        ArrayList<Person> people=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            String line=scanner.nextLine();
+            String[] arrWords=line.split(" ");
+            int age=Integer.parseInt(arrWords[1]);
+            if(age > 30){
+                Person person=new Person(arrWords[0],age);
+                people.add(person);
+            }
+        }
+        for(int i=0;i<people.size();i++){
+            System.out.printf("%s - %d%n",people.get(i).name,people.get(i).age);
+        }
+    }
+}
