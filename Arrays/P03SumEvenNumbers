@@ -1,0 +1,25 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P03SumEvenNumbers {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arr_words=line.split(" ");
+        int sum=0;
+        int[] arr_numbers=new int[arr_words.length];
+        for(int i=0;i< arr_words.length;i++){
+            int current_number=Integer.parseInt(arr_words[i]);
+            arr_numbers[i]=current_number;
+        }
+        for(int i=0;i<arr_numbers.length;i++){
+            if(arr_numbers[i]%2==0){
+                sum=sum+arr_numbers[i];
+            }
+        }
+        System.out.println(sum);
+
+
+    }
+}
