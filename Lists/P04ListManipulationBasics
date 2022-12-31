@@ -1,0 +1,65 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P04ListManipulationBasics {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arrWords=line.split(" ");
+        int[] arrNumber=new int[arrWords.length];
+        for(int i=0;i< arrNumber.length;i++){
+            int num=Integer.parseInt(arrWords[i]);
+            arrNumber[i]=num;
+        }
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i=0;i<arrNumber.length;i++){
+            arr.add(arrNumber[i]);
+        }
+        do{
+            String command=scanner.nextLine();
+            if(command.equals("end")){
+                for(int i=0;i<arr.size();i++){
+                    System.out.print(arr.get(i)+" ");
+                }
+                break;
+            }
+            String[] arrCommand=command.split(" ");
+            if(arrCommand[0].equals("Add")){
+                int numberForAdd=Integer.parseInt(arrCommand[1]);
+                arr.add(numberForAdd);
+            }else if(arrCommand[0].equals("Remove")){
+                int numberForRemove=Integer.parseInt(arrCommand[1]);
+                for(int i=0;i<arr.size();i++){
+                    if(arr.contains(numberForRemove)){
+                        int currentIndex=arr.indexOf(numberForRemove);
+                        arr.remove(currentIndex);
+                    }
+                }
+            }else if(arrCommand[0].equals("RemoveAt")){
+                int indexForRemove=Integer.parseInt(arrCommand[1]);
+                arr.remove(indexForRemove);
+            }else if(arrCommand[0].equals("Insert")){
+                int numberForInsert=Integer.parseInt(arrCommand[1]);
+                int indexToInsert=Integer.parseInt(arrCommand[2]);
+                ArrayList<Integer> arrOpashka=new ArrayList<>();
+                for(int i=indexToInsert;i<arr.size();i++){
+                    arrOpashka.add(arr.get(i));
+                }
+                int iteraciiDelete=arrOpashka.size();
+                for(int i=1;i<=iteraciiDelete;i++){
+                    arr.remove(arr.size()-1);
+                }
+
+                int index=0;
+                arr.add(numberForInsert);
+                for(int j=indexToInsert+1;j<(indexToInsert+1+ arrOpashka.size());j++){
+                    arr.add(arrOpashka.get(index));
+                    index++;
+                }
+            }
+        }while(true);
+
+    }
+}
