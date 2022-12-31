@@ -1,0 +1,34 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P04Calculations {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String operation=scanner.nextLine();
+        int number1=Integer.parseInt(scanner.nextLine());
+        int number2=Integer.parseInt(scanner.nextLine());
+        if(operation.equals("add")){
+            System.out.println(Add(number1,number2));
+        }else if(operation.equals("multiply")){
+            System.out.println(Multi(number1,number2));
+        }else if(operation.equals("substract")){
+            System.out.println(Substract(number1,number2));
+        }else if(operation.equals("divide")){
+            System.out.println(Divide(number1,number2));
+        }
+    }
+    public static int Add(int num1,int num2){
+        int result=num1+num2;
+        return result;
+    }
+    public static int Multi(int num1,int num2){
+        return num1*num2;
+    }
+    public static int Substract(int num1,int num2){
+        return num1-num2;
+    }
+    public static int Divide(int num1,int num2){
+        return num1/num2;
+    }
+}
