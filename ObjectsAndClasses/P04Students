@@ -1,0 +1,50 @@
+package ObjectsAndClasses;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P04Students {
+    public static class Student{
+        private String firstName;
+        private String lastName;
+        private double mark;
+
+        public Student(String firstName,String lastName,double mark){
+            this.firstName=firstName;
+            this.lastName=lastName;
+            this.mark=mark;
+        }
+        public String getFirstName(){
+            return this.firstName;
+        }
+        public String getLastName(){
+            return this.lastName;
+        }
+        public double getMark(){
+            return this.mark;
+        }
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int n=Integer.parseInt(scanner.nextLine());
+        ArrayList<Student> listOfStudents=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            String line=scanner.nextLine();
+            String[] arrWords=line.split(" ");
+            Student student1=new Student(arrWords[0],arrWords[1],Double.parseDouble(arrWords[2]));
+            listOfStudents.add(student1);
+        }
+        for(int i=0;i<listOfStudents.size();i++){
+            for(int j=i+1;j<listOfStudents.size();j++){
+                if(listOfStudents.get(i).getMark()<listOfStudents.get(j).getMark()){
+                    Student Q=listOfStudents.get(i);
+                    listOfStudents.set(i,listOfStudents.get(j));
+                    listOfStudents.set(j,Q);
+                }
+            }
+        }
+        for(int i=0;i<listOfStudents.size();i++){
+            System.out.printf("%s %s: %.2f%n",listOfStudents.get(i).getFirstName(),listOfStudents.get(i).getLastName(),listOfStudents.get(i).getMark());
+        }
+    }
+}
