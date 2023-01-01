@@ -1,0 +1,40 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+public class P08Train {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arrWords=line.split(" ");
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int i=0;i<arrWords.length;i++){
+            arr.add(Integer.parseInt(arrWords[i]));
+        }
+        int max=Integer.parseInt(scanner.nextLine());
+        do{
+            String command=scanner.nextLine();
+            if(command.equals("end")){
+                for(int i=0;i<arr.size();i++){
+                    System.out.print(arr.get(i)+" ");
+                }
+                break;
+            }
+            String[] arrCommand=command.split(" ");
+            if(arrCommand[0].equals("Add")){
+                int numberToAdd=Integer.parseInt(arrCommand[1]);
+                arr.add(numberToAdd);
+            }else{
+                int passengers=Integer.parseInt(arrCommand[0]);
+                for(int i=0;i<arr.size();i++){
+                    if(arr.get(i)+passengers<=max){
+                        int Q=arr.get(i);
+                        arr.set(i,Q+passengers);
+                        break;
+                    }
+                }
+            }
+
+        }while(true);
+    }
+}
