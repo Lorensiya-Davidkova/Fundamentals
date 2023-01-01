@@ -1,0 +1,86 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P05ListManipulationAdvanced {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arrWords=line.split(" ");
+        ArrayList<Integer> arr=new ArrayList<>();
+        for(int i=0;i<arrWords.length;i++){
+            int num=Integer.parseInt(arrWords[i]);
+            arr.add(num);
+        }
+        do{
+            String command=scanner.nextLine();
+            if(command.equals("end")){
+                break;
+            }
+            String[] arrCommand=command.split(" ");
+            if(arrCommand[0].equals("Contains")){
+                int numberSearch=Integer.parseInt(arrCommand[1]);
+                if(arr.contains(numberSearch)){
+                    System.out.println("Yes");
+                }else{
+                    System.out.println("No such number");
+                }
+            }else if(arrCommand[0].equals("Print")){
+                if(arrCommand[1].equals("even")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)%2==0){
+                            System.out.printf(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }else if(arrCommand[1].equals("odd")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)%2!=0){
+                            System.out.print(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }
+            }else if(arrCommand[0].equals("Get")){
+                int sum=0;
+                for(int i=0;i<arr.size();i++){
+                    sum=sum+arr.get(i);
+                }
+                System.out.println(sum);
+            }else if(arrCommand[0].equals("Filter")){
+                int numberCompare=Integer.parseInt(arrCommand[2]);
+                if(arrCommand[1].equals("<")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)<numberCompare){
+                            System.out.print(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }else if(arrCommand[1].equals(">")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)>numberCompare){
+                            System.out.print(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }else if(arrCommand[1].equals(">=")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)>=numberCompare){
+                            System.out.print(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }else if(arrCommand[1].equals("<=")){
+                    for(int i=0;i<arr.size();i++){
+                        if(arr.get(i)<=numberCompare){
+                            System.out.print(arr.get(i)+" ");
+                        }
+                    }
+                    System.out.println();
+                }
+            }
+        }while(true);
+
+    }
+}
