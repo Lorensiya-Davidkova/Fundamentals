@@ -1,0 +1,93 @@
+package ObjectsAndClasses;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P05VehicleCatalogue {
+    public static class Vehicle{
+        private String Type;
+        private String Model;
+        private String Color;
+        private int HorsePower;
+
+        public Vehicle(String Type,String Model,String Color,int HorsePower){
+            this.Type=Type;
+            this.Model=Model;
+            this.Color=Color;
+            this.HorsePower=HorsePower;
+        }
+        public String getType(){
+            return this.Type;
+        }
+        public String getModel(){
+            return this.Model;
+        }
+        public String getColor(){
+            return this.Color;
+        }
+        public int getHorsePower(){
+            return this.HorsePower;
+        }
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        ArrayList<Vehicle> listOfCars=new ArrayList<>();
+        ArrayList<Vehicle> listOfTrucks=new ArrayList<>();
+        do{
+            String line=scanner.nextLine();
+            if(line.equals("End")){
+                do{
+                    String currentModel=scanner.nextLine();
+                    if(currentModel.equals("Close the Catalogue")){
+                        double averageHPCar=0;
+                        double averageHPTruck=0;
+                        for(int i=0;i<listOfCars.size();i++){
+                            averageHPCar=averageHPCar+listOfCars.get(i).getHorsePower();
+                        }
+                        for(int i=0;i<listOfTrucks.size();i++){
+                            averageHPTruck=averageHPTruck+listOfTrucks.get(i).getHorsePower();
+                        }
+                        if(listOfCars.size()==0){
+                            System.out.printf("Cars have average horsepower of: 0.00.%n");
+                        }else {
+                            System.out.printf("Cars have average horsepower of: %.2f.%n", averageHPCar / listOfCars.size());
+                        }
+                        if(listOfTrucks.size()==0) {
+                            System.out.printf("Trucks have average horsepower of: 0.00.%n");
+                        }else{
+                            System.out.printf("Trucks have average horsepower of: %.2f.%n", averageHPTruck / listOfTrucks.size());
+                        }
+                        break;
+                    }else{
+                        for(int i=0;i<listOfCars.size();i++){
+                            if(listOfCars.get(i).getModel().equals(currentModel)){
+                                System.out.printf("Type: Car%n");
+                                System.out.printf("Model: %s%n",listOfCars.get(i).getModel());
+                                System.out.printf("Color: %s%n",listOfCars.get(i).getColor());
+                                System.out.printf("Horsepower: %d%n",listOfCars.get(i).getHorsePower());
+                            }
+                        }
+                        for(int j=0;j<listOfTrucks.size();j++){
+                            if(listOfTrucks.get(j).getModel().equals(currentModel)){
+                                System.out.printf("Type: Truck%n");
+                                System.out.printf("Model: %s%n",listOfTrucks.get(j).getModel());
+                                System.out.printf("Color: %s%n",listOfTrucks.get(j).getColor());
+                                System.out.printf("Horsepower: %d%n",listOfTrucks.get(j).getHorsePower());
+                            }
+                        }
+                    }
+
+                }while(true);
+                break;
+            }
+            String[] arrWords=line.split(" ");
+            if(arrWords[0].equals("car")){
+                Vehicle car=new Vehicle(arrWords[0],arrWords[1],arrWords[2],Integer.parseInt(arrWords[3]));
+                listOfCars.add(car);
+            }else if(arrWords[0].equals("truck")){
+                Vehicle truck=new Vehicle(arrWords[0],arrWords[1],arrWords[2],Integer.parseInt(arrWords[3]));
+                listOfTrucks.add(truck);
+            }
+        }while(true);
+    }
+}
