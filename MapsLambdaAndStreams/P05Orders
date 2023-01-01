@@ -1,0 +1,47 @@
+package MapsLambdaAndStreamAPI;
+import java.util.*;
+public class P05Orders {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        // бройката трябва да съхраним, тъй като тя се сумира
+        // цената НЕ трябва да съхраняваме, тъй като тя се промея(последната е валидна)
+        // четем ред-> питаме дали имаме продукт с такъв key(името), ако нямаме добавяме, ако имаме обаче увеличаваме броя
+        // два maр-а ---> един за име+брой и още един име+ цена
+
+        LinkedHashMap<String,Integer> mapOfNamesAndBroi=new LinkedHashMap<>();
+        LinkedHashMap<String,Double> mapOfNamesAndPrice=new LinkedHashMap<>();
+        do{
+            String[] arrWords=scanner.nextLine().split(" ");
+            String name=arrWords[0];
+            if(name.equals("buy")){
+                break;
+            }
+            double price=Double.parseDouble(arrWords[1]);
+            int broi=Integer.parseInt(arrWords[2]);
+            if(mapOfNamesAndBroi.containsKey(name)){
+                for(Map.Entry<String,Integer> entry:mapOfNamesAndBroi.entrySet()){
+                    if(entry.getKey().equals(name)) {
+                        int newBroi = entry.getValue() + broi;
+                        entry.setValue(newBroi);
+                    }
+                }
+                for(Map.Entry<String,Double> entry:mapOfNamesAndPrice.entrySet()){
+                    if(entry.getKey().equals(name)) {
+                        entry.setValue(price);
+                    }
+                }
+            }else{
+                mapOfNamesAndBroi.put(name,broi);
+                mapOfNamesAndPrice.put(name,price);
+            }
+        }while(true);
+
+        for(Map.Entry<String,Integer> entry:mapOfNamesAndBroi.entrySet()){
+            for(Map.Entry<String,Double> entry1:mapOfNamesAndPrice.entrySet()){
+                if(entry.getKey().equals(entry1.getKey())){
+                    System.out.printf("%s -> %.2f%n",entry.getKey(),entry.getValue()*entry1.getValue());
+                }
+            }
+        }
+    }
+}
