@@ -1,0 +1,34 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P10HouseParty {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int broi=Integer.parseInt(scanner.nextLine());
+        ArrayList<String> arr=new ArrayList<>();
+        for(int i=0;i<broi;i++){
+            String command=scanner.nextLine();
+            String[] arrCommand=command.split(" ");
+            if(arrCommand.length==3){
+                String personName=arrCommand[0];
+                if(arr.contains(personName)){
+                    System.out.printf("%s is already in the list!%n",personName);
+                }else{
+                    arr.add(personName);
+                }
+            }else if(arrCommand.length==4){
+                String personName=arrCommand[0];//chovek za mahane
+                if(arr.contains(personName)){
+                    arr.remove(personName);
+                }else{
+                    System.out.printf("%s is not in the list!%n",personName);
+                }
+            }
+        }
+        for(int i=0;i<arr.size();i++) {
+            System.out.println(arr.get(i));
+        }
+    }
+}
