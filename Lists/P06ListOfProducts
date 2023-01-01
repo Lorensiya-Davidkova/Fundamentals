@@ -1,0 +1,29 @@
+package Lists;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P06ListOfProducts {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int broi=Integer.parseInt(scanner.nextLine());
+        ArrayList<String> products=new ArrayList<>();
+        for(int i=0;i<broi;i++){
+            String product=scanner.nextLine();
+            products.add(product);
+        }
+        for(int i=0;i<products.size()-1;i++){
+            for(int j=i+1;j< products.size();j++){
+                if(products.get(i).charAt(0)>products.get(j).charAt(0)){
+                    String Q= products.get(i);
+                    products.set(i,products.get(j));
+                    products.set(j,Q);
+                }
+            }
+        }
+        for(int i=0;i< products.size();i++){
+            System.out.printf("%d.%s%n",i+1,products.get(i));
+        }
+
+    }
+}
