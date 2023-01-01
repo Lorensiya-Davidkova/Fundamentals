@@ -1,0 +1,15 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P05PrintPartOfASCIITable {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int start_num=Integer.parseInt(scanner.nextLine());
+        int end_num=Integer.parseInt(scanner.nextLine());
+        for(int i=start_num;i<=end_num;i++){
+            System.out.printf("%c ",i);
+        }
+
+    }
+}
