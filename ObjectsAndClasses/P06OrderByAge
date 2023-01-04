@@ -1,0 +1,52 @@
+package ObjectsAndClasses;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P06OrderByAge {
+    public static class Person{
+        private String name;
+        private String IDnumber;
+        private int age;
+
+        public Person(String name,String IDnumber, int age){
+            this.name=name;
+            this.IDnumber=IDnumber;
+            this.age=age;
+        }
+        public String getName(){
+            return this.name;
+        }
+        public String getIDnumber(){
+            return this.IDnumber;
+        }
+        public int getAge(){
+            return this.age;
+        }
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        ArrayList<Person> listOfPeople=new ArrayList<>();
+        do{
+            String line=scanner.nextLine();
+            if(line.equals("End")){
+                break;
+            }
+            String[] arrWords=line.split(" ");
+            Person person1=new Person(arrWords[0],arrWords[1],Integer.parseInt(arrWords[2]));
+            listOfPeople.add(person1);
+        }while(true);
+        for(int i=0;i<listOfPeople.size();i++){
+            for(int j=i+1;j<listOfPeople.size();j++){
+                if(listOfPeople.get(i).getAge()>listOfPeople.get(j).getAge()){
+                    Person Q=listOfPeople.get(i);
+                    listOfPeople.set(i,listOfPeople.get(j));
+                    listOfPeople.set(j,Q);
+                }
+            }
+        }
+        for(int i=0;i<listOfPeople.size();i++){
+            System.out.printf("%s with ID: %s is %d years old.%n",listOfPeople.get(i).getName(),listOfPeople.get(i).getIDnumber(),listOfPeople.get(i).getAge());
+        }
+    }
+}
