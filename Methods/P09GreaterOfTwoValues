@@ -1,0 +1,63 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P09GreaterOfTwoValues {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String TypeCompare=scanner.nextLine();
+        String line1=scanner.nextLine();
+        String line2=scanner.nextLine();
+        if(TypeCompare.equals("int")){
+            int num1=Integer.parseInt(line1);
+            int num2=Integer.parseInt(line2);
+            getMaxInt(num1,num2);
+        }else if(TypeCompare.equals("char")){
+            char ele1=line1.charAt(0);
+            char ele2=line2.charAt(0);
+            getMaxChar(ele1,ele2);
+        }else if(TypeCompare.equals("string")){
+            getMaxString(line1,line2);
+        }
+
+    }
+    public static void getMaxInt(int number1,int number2){
+        int max=Integer.MIN_VALUE;
+        if(number1>number2){
+            max=number1;
+        }else if(number1<number2){
+            max=number2;
+        }
+        if(max!=Integer.MIN_VALUE){
+            System.out.println(max);
+        }else if(max==Integer.MIN_VALUE){
+            System.out.println(number1);
+        }
+    }
+    public static void getMaxChar(char element1,char element2){
+        char  max=' ';
+        if(element1>element2){
+            max=element1;
+        }else if(element2>element1){
+            max=element2;
+        }
+        if(max!=' '){
+            System.out.println(max);
+        }else if(max==' '){
+            System.out.println(element1);
+        }
+    }
+    public static void getMaxString(String a,String b){
+        String max=null;
+        if(a.charAt(0)>b.charAt(0)){
+            max=a;
+        }else if(b.charAt(0)>a.charAt(0)){
+            max=b;
+        }
+        if(max!=null){
+            System.out.println(max);
+        }else if(max==null){
+            System.out.println(a);
+        }
+    }
+}
