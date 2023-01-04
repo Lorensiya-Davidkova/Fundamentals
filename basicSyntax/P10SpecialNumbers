@@ -1,0 +1,25 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P10SpecialNumbers {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int sum_of_digits=0;
+        int number=Integer.parseInt(scanner.nextLine());
+        for(int i=1;i<=number;i++){
+            int current_num=i;
+            while(current_num>0){
+                int cifra=current_num%10;
+                sum_of_digits=sum_of_digits+cifra;
+                current_num=current_num/10;
+            }
+            if((sum_of_digits==5)||(sum_of_digits==7)||(sum_of_digits==11)){
+                System.out.printf("%d -> True%n",i);
+            }else{
+                System.out.printf("%d -> False%n",i);
+            }
+            sum_of_digits=0;
+        }
+    }
+}
