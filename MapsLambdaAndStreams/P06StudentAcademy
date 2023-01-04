@@ -1,0 +1,37 @@
+package MapsLambdaAndStreamAPI;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class P06StudentAcademy {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        LinkedHashMap<String, ArrayList<Double>> myMap=new LinkedHashMap<>();
+        int n=Integer.parseInt(scanner.nextLine());
+        for(int i=0;i<n;i++){
+            String name=scanner.nextLine();
+            double mark=Double.parseDouble(scanner.nextLine());
+            if(myMap.containsKey(name)){
+                for(Map.Entry<String,ArrayList<Double>> entry:myMap.entrySet()){
+                    if(entry.getKey().equals(name)){
+                        entry.getValue().add(mark);
+                    }
+                }
+            }else{
+                ArrayList<Double> arr=new ArrayList<>();
+                arr.add(mark);
+                myMap.put(name,arr);
+            }
+        }
+        for(Map.Entry<String,ArrayList<Double>> entry:myMap.entrySet()){
+            double average=0;
+            for(int i=0;i<entry.getValue().size();i++){
+                average=average+entry.getValue().get(i);
+            }
+            average=average/entry.getValue().size();
+            if(average>=4.50){
+                System.out.printf("%s -> %.2f%n",entry.getKey(),average);
+            }
+        }
+    }
+}
