@@ -1,0 +1,40 @@
+package TextProcessing;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class P06ValidUsernames {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String[] arrOfUserNames=scanner.nextLine().split(", ");
+        ArrayList<String> correctUsers=new ArrayList<>();
+
+        for(int i=0;i<arrOfUserNames.length;i++){
+            String currentUser=arrOfUserNames[i];
+            int counter=0;
+
+            if(currentUser.length()<3|| currentUser.length()>16){
+                counter++;
+            }
+            for(int j=0;j<currentUser.length();j++){
+                char currentLetter=currentUser.charAt(j);
+                if((currentLetter>=65 && currentLetter<=90) || (currentLetter>=97 && currentLetter<=122)||
+                        (currentLetter>=48 && currentLetter<=57) || currentLetter==45|| currentLetter==95){
+                    //vsichko e nared
+                }else{
+                    //nqkoi znak ne e po pravilo!
+                    counter++;
+                    break;
+                }
+            }
+
+            if(counter==0){
+                correctUsers.add(currentUser);
+            }
+        }
+        for(int i=0;i< correctUsers.size();i++){
+            System.out.println(correctUsers.get(i));
+        }
+
+    }
+}
