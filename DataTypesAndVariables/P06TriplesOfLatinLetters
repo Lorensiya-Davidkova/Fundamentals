@@ -1,0 +1,19 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P06TriplesOfLatinLetters {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int number=Integer.parseInt(scanner.nextLine());
+        int end_num=97+number;
+        for(int i=97;i<end_num;i++){
+            for(int j=97;j<end_num;j++){
+                for(int k=97;k<end_num;k++){
+                    System.out.printf("%c%c%c%n",i,j,k);
+                }
+            }
+        }
+
+    }
+}
