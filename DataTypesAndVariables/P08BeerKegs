@@ -1,0 +1,24 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P08BeerKegs {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int number=Integer.parseInt(scanner.nextLine());
+        double max_volume=0;
+        String max_keg="";
+        for(int i=0;i<number;i++){
+            String current_model=scanner.nextLine();
+            double current_radius=Double.parseDouble(scanner.nextLine());
+            int current_height=Integer.parseInt(scanner.nextLine());
+            double current_volume=Math.PI*Math.pow(current_radius,2)*current_height;
+            if(max_volume<current_volume){
+                max_volume=current_volume;
+                max_keg=current_model;
+            }
+        }
+        System.out.println(max_keg);
+
+    }
+}
