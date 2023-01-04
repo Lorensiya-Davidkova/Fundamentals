@@ -1,0 +1,17 @@
+package Methods;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import java.lang.Math;
+public class P08MathPower {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double osnova=Double.parseDouble(scanner.nextLine());
+        int stepen=Integer.parseInt(scanner.nextLine());
+        System.out.println(mathPow(osnova,stepen));
+    }
+    public static String mathPow(double osnova,int stepen){
+        double result=Math.pow(osnova,stepen);
+        String toReturn=new DecimalFormat("0.####").format(result);
+        return toReturn;
+    }
+}
