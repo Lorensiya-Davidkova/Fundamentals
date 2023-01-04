@@ -1,0 +1,16 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P08LowerOrUpper {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        char letter=scanner.next().charAt(0);
+        int ascii_num=letter;
+        if(ascii_num>=65 && ascii_num<=90){
+            System.out.println("upper-case");
+        }else if(ascii_num>=97 && ascii_num<=122){
+            System.out.println("lower-case");
+        }
+    }
+}
