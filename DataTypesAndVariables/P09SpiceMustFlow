@@ -1,0 +1,30 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P09SpiceMustFlow {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        double area=Double.parseDouble(scanner.nextLine());
+        double spice=area;
+        double sum_of_spice=0;
+        int counter=0;
+        int important_value=0;
+        do{
+            if((area<100)&&(counter!=0)){//по естествен път площта е станала< 100
+                sum_of_spice=sum_of_spice-26;
+                important_value++;
+                break;
+            }else if((area<100)&&(counter==0)){//площта е въведена като по-малък от 100
+                break;
+            }
+            spice=area-26;
+            area=area-10;
+            counter++;
+            sum_of_spice=sum_of_spice+spice;
+        }while(true);
+        System.out.println(counter);
+        System.out.printf("%.0f",sum_of_spice);
+
+    }
+}
