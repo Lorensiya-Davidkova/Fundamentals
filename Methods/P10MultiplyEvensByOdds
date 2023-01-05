@@ -1,0 +1,29 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P10MultiplyEvensByOdds {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int number=Integer.parseInt(scanner.nextLine());
+        System.out.println( Numbers(number));
+    }
+    public static int Numbers(int number){
+        if(number<0){
+            number=-number;
+        }
+        int SumEven=0;
+        int SumOdd=0;
+        while(number>0){
+            int digit=number%10;
+            if(digit%2==0){
+                SumEven=SumEven+digit;
+            }else{
+                SumOdd=SumOdd+digit;
+            }
+            number=number/10;
+        }
+        int result=SumEven*SumOdd;
+        return result;
+    }
+}
