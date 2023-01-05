@@ -1,0 +1,39 @@
+package TextProcessing;
+
+import java.util.Scanner;
+
+public class P07CharacterMultiplier {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String[] arrWords=scanner.nextLine().split(" ");
+        String first=arrWords[0];
+        String second=arrWords[1];
+        //трябва да сравним двата стринага- ако единят е по-дълг, създаваме променлиеа,
+        //в коята да съхраним сумираните кодове до където е втория стринг, умножаваме с неговите кодове
+        // и след операцията добавяме останалите
+
+        int sumOrigin=0;
+        if(first.length()>second.length()){
+            int commonLen=second.length();
+            for(int i=0;i<commonLen;i++){
+                sumOrigin=sumOrigin+(int)first.charAt(i)*(int)second.charAt(i);
+            }
+            for(int j=commonLen;j<first.length();j++){
+                sumOrigin=sumOrigin+first.charAt(j);
+            }
+        }else if(first.length()<second.length()){
+            int commonLen=first.length();
+            for(int i=0;i<commonLen;i++){
+                sumOrigin=sumOrigin+(int)first.charAt(i)*(int)second.charAt(i);
+            }
+            for(int j=commonLen;j<second.length();j++){
+                sumOrigin=sumOrigin+second.charAt(j);
+            }
+        }else{
+            for(int i=0;i<first.length();i++){
+                sumOrigin=sumOrigin+(int)first.charAt(i)*(int)second.charAt(i);
+            }
+        }
+        System.out.println(sumOrigin);
+    }
+}
