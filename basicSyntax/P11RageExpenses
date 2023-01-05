@@ -1,0 +1,38 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P11RageExpenses {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String a=scanner.nextLine();
+        int broi_lost_games=Integer.parseInt(a);
+        String headsetS=scanner.nextLine();
+        double headset_price=Double.parseDouble(headsetS);
+        String mouseS=scanner.nextLine();
+        double mouse_price=Double.parseDouble(mouseS);
+        String keyboardS=scanner.nextLine();
+        double keyboard_price=Double.parseDouble(keyboardS);
+        String displayS=scanner.nextLine();
+        double display_price=Double.parseDouble(displayS);
+        int trashed_headset=0;
+        int trashed_mouse=0;
+        int trashed_keyboard=0;
+        int trashed_display=0;
+        for(int i=1;i<=broi_lost_games;i++){
+            if(i%2==0){
+                trashed_headset++;
+            }
+            if(i%3==0){
+                trashed_mouse++;
+            }
+            if(i%6==0){
+                trashed_keyboard++;
+            }
+        }
+        trashed_display=trashed_keyboard/2;
+        double izgubeni_money=trashed_headset*headset_price+trashed_mouse*mouse_price+trashed_keyboard*keyboard_price+trashed_display*display_price;
+        System.out.printf("Rage expenses: %.2f lv.",izgubeni_money);
+
+    }
+}
