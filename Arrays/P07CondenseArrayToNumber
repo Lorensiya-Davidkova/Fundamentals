@@ -1,0 +1,38 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P07CondenseArrayToNumber {
+    public static void main(String[] args) {
+    Scanner scanner=new Scanner(System.in);
+    String line=scanner.nextLine();
+    String[] arr_words=line.split(" ");
+    int[] original_array=new int[arr_words.length];
+        for(int i=0;i<arr_words.length;i++){
+        int num=Integer.parseInt(arr_words[i]);
+        original_array[i]=num;
+    }
+        do{
+        if(original_array.length==1){
+            System.out.println(original_array[0]);
+            break;
+        }
+        int n=original_array.length-1;
+        int[] modified_array=new int[n];
+        for(int i=0;i<= original_array.length-2;i++){
+            int current_num=original_array[i]+original_array[i+1];
+            modified_array[i]=current_num;
+        }
+        original_array=new int[modified_array.length];
+        for(int i=0;i< original_array.length;i++){
+            original_array[i]=modified_array[i];
+        }
+        if(original_array.length==2){
+            int total=original_array[0]+original_array[1];
+            System.out.println(total);
+            break;
+        }
+    }while(true);
+
+}
+}
