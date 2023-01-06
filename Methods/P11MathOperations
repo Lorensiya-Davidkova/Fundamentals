@@ -1,0 +1,33 @@
+package Methods;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class P11MathOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double number1=Double.parseDouble(scanner.nextLine());
+        char oper=scanner.nextLine().charAt(0);
+        double number2=Double.parseDouble(scanner.nextLine());
+        double prediMinus=Exercise(number1,number2,oper);
+        int sledMinus=(int)(Exercise(number1,number2,oper));
+        if(prediMinus-sledMinus==0){
+            System.out.println(new DecimalFormat("0.##").format(Exercise(number1,number2,oper)));
+        }else{
+            System.out.printf("%.2f",Exercise(number1,number2,oper));
+        }
+    }
+    public static double Exercise(double num1,double num2,char operation){
+        double result=0;
+        if(operation=='+'){
+            result=num1+num2;
+        }else if(operation=='-'){
+            result=num1-num2;
+        }else if(operation=='*'){
+            result=num1*num2;
+        }else if(operation=='/'){
+            result=num1/num2;
+        }
+        return result;
+    }
+}
