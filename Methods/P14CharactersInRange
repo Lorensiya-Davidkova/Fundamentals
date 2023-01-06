@@ -1,0 +1,31 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P14CharactersInRange {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char firstElement=scanner.nextLine().charAt(0);
+        char secondElement=scanner.nextLine().charAt(0);
+        getRedica(firstElement,secondElement);
+
+    }
+    public static void getRedica(char firstElement,char secondElement){
+        int start=0;
+        int end=0;
+        if(firstElement>secondElement){
+            start=secondElement;
+            end=firstElement;
+        }else if(firstElement<secondElement){
+            start=firstElement;
+            end=secondElement;
+        }else if(firstElement==secondElement){
+            start=firstElement;
+            end=firstElement;
+        }
+        String result="";
+        for(int i=start+1;i<=end-1;i++){
+            System.out.printf("%c ",i);
+        }
+    }
+}
