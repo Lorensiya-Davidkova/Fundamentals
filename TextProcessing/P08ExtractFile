@@ -1,0 +1,26 @@
+package TextProcessing;
+
+import java.util.Scanner;
+
+public class P08ExtractFile {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String line=scanner.nextLine();
+        int index=line.lastIndexOf("\\");
+        String subseq= (String) line.subSequence(index+1,line.length());
+        String name="";
+        String extension="";
+        for(int i=0;i<subseq.length();i++){
+            if(subseq.charAt(i)=='.'){
+                for(int j=i+1;j<subseq.length();j++){
+                    extension=extension+subseq.charAt(j);
+                }
+                i=subseq.length()-1;
+            }else{
+                name=name+subseq.charAt(i);
+            }
+        }
+        System.out.println("File name: "+name);
+        System.out.println("File extension: "+extension);
+    }
+}
