@@ -1,0 +1,57 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P12EqualSums {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arr_words=line.split(" ");
+        int [] arr=new int[arr_words.length];
+        int left_sum=0;
+        int right_sum=0;
+        for(int i=0;i<arr.length;i++){
+            int number=Integer.parseInt(arr_words[i]);
+            arr[i]=number;
+        }
+        int index=-1;
+        for (int i = 0; i <= arr.length - 1; i++) {
+            if(i==0){
+                left_sum=0;
+                for(int q=i+1;q<arr.length;q++){
+                    right_sum=right_sum+arr[q];
+                }
+                if(left_sum==right_sum){
+                    index=i;
+                }
+            }else if(i==arr.length-1){
+                right_sum=0;
+                for(int p=0;p<i;p++) {
+                    left_sum = left_sum + arr[p];
+                }
+                if(left_sum==right_sum){
+                    index=i;
+                }
+            }else {
+                for (int j = 0; j < i; j++) {
+                    left_sum = left_sum + arr[j];
+                }
+                for (int k = i + 1; k < arr.length; k++) {
+                    right_sum = right_sum + arr[k];
+                }
+                if (left_sum == right_sum) {
+                    index = i;
+                }
+            }
+            left_sum = 0;
+            right_sum = 0;
+        }
+
+        if(index==-1){
+            System.out.println("no");
+        }else{
+            System.out.println(index);
+        }
+
+    }
+}
