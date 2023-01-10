@@ -1,0 +1,22 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P12FloatingEquality {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double a=Double.parseDouble(scanner.nextLine());
+        double b=Double.parseDouble(scanner.nextLine());
+        double razlika=0;
+        if(a>b){
+            razlika=a-b;
+        }else{
+            razlika=b-a;
+        }
+        if(razlika<0.000001){
+            System.out.println("True");
+        }else{
+            System.out.println("False");
+        }
+    }
+}
