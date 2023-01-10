@@ -1,0 +1,23 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P16AddAndSubtract {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num1=Integer.parseInt(scanner.nextLine());
+        int num2=Integer.parseInt(scanner.nextLine());
+        int num3=Integer.parseInt(scanner.nextLine());
+        int resultForSubstract=Sum(num1,num2);
+        System.out.println(Substract(resultForSubstract,num3));
+
+    }
+    public static int Sum(int num1,int num2){
+        int result=num1+num2;
+        return result;
+    }
+    public static int Substract(int result,int num3){
+        int toReturn=result-num3;
+        return toReturn;
+    }
+}
