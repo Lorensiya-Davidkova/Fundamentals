@@ -1,0 +1,40 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P15MagicSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arr_word=line.split(" ");
+        int number=Integer.parseInt(scanner.nextLine());
+        int counter=0;
+        int[] arr=new int[arr_word.length];
+        for(int i=0;i< arr_word.length;i++){
+            int current_number=Integer.parseInt(arr_word[i]);
+            arr[i]=current_number;
+        }
+        for(int i=0;i< arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]+arr[j]==number){
+                    counter++;
+                }
+            }
+        }
+        int[] arr_for_numbers=new int[counter*2];
+        int index=0;
+        for(int i=0;i< arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]+arr[j]==number){
+                    arr_for_numbers[index]=arr[i];
+                    arr_for_numbers[index+1]=arr[j];
+                    index=index+2;
+                }
+            }
+        }
+        for(int i=0;i< arr_for_numbers.length;i+=2){
+            System.out.printf("%d %d%n",arr_for_numbers[i],arr_for_numbers[i+1]);
+        }
+
+    }
+}
