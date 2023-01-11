@@ -1,0 +1,52 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P14TopIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String line=scanner.nextLine();
+        String[] arr_elements=line.split(" ");
+        int[] arr=new int[arr_elements.length];
+        for(int i=0;i< arr.length;i++){
+            int number=Integer.parseInt(arr_elements[i]);
+            arr[i]=number;
+        }
+        int counter=0;
+        int for_adding=0;
+        for(int i=0;i<= arr.length-2;i++){
+            for(int j=i+1;j<= arr.length-1;j++){
+                if(arr[i]>(arr[j])){
+                    counter++;
+                }else{
+                    break;
+                }
+            }
+            if(counter==arr.length-(i+1)){
+                for_adding++;
+            }
+            counter=0;
+        }
+        int index=0;
+        int[] arr_important=new int[for_adding+1];
+        int counter1=0;
+        for(int i=0;i<= arr.length-2;i++){
+            for(int j=i+1;j<= arr.length-1;j++){
+                if(arr[i]>(arr[j])){
+                    counter1++;
+                }else{
+                    break;
+                }
+            }
+            if(counter1==arr.length-(i+1)){
+                arr_important[index]=arr[i];
+                index++;
+            }
+            counter1=0;
+        }
+        arr_important[arr_important.length-1]=arr[arr.length-1];
+        for(int i=0;i< arr_important.length;i++){
+            System.out.printf("%d ",arr_important[i]);
+        }
+    }
+}
