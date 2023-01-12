@@ -1,0 +1,51 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P16ArrayModifier {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        //Exercise 9-> Array Modifier
+        String line=scanner.nextLine();
+        String[] arr_words=line.split(" ");
+        int[] arr_numbers=new int[arr_words.length];
+        for(int i=0;i< arr_words.length;i++){
+            int current_number=Integer.parseInt(arr_words[i]);
+            arr_numbers[i]=current_number;
+        }
+        do{
+            String command=scanner.nextLine();
+            if(command.equals("end")){
+                for(int i=0;i< arr_numbers.length;i++) {
+                    if(i== arr_numbers.length-1){
+                        System.out.printf("%d",arr_numbers[i]);
+                    }else {
+                        System.out.printf("%d, ", arr_numbers[i]);
+                    }
+                }
+                System.out.println();
+                break;
+            }
+            String[] arr_command=command.split(" ");
+            if(arr_command[0].equals("swap")){
+                int first_index=Integer.parseInt(arr_command[1]);
+                int second_index=Integer.parseInt(arr_command[2]);
+                int first_number=arr_numbers[first_index];
+                int second_number=arr_numbers[second_index];
+                arr_numbers[first_index]=second_number;
+                arr_numbers[second_index]=first_number;
+            }else if(arr_command[0].equals("multiply")){
+                int a=arr_numbers[Integer.parseInt(arr_command[1])];
+                int b=arr_numbers[Integer.parseInt(arr_command[2])];
+                int result=a*b;
+                arr_numbers[Integer.parseInt(arr_command[1])]=result;
+            }else if(arr_command[0].equals("decrease")){
+                for(int i=0;i< arr_numbers.length;i++){
+                    int new_element=arr_numbers[i]-1;
+                    arr_numbers[i]=new_element;
+                }
+            }
+        }while(true);
+
+    }
+}
