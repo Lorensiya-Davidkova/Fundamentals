@@ -1,0 +1,21 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P17MiddleCharacters {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input=scanner.nextLine();
+        MiddleChar(input);
+    }
+    public static void MiddleChar(String line){
+        if(line.length()%2==0){
+            int first=(line.length()/2)-1;
+            int second=line.length()/2;
+            System.out.printf("%c%c",line.charAt(first),line.charAt(second));
+        }else if(line.length()%2!=0){
+            int index=line.length()/2;
+            System.out.printf("%c",line.charAt(index));
+        }
+    }
+}
