@@ -1,0 +1,51 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P15BalancedBrackets {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n=Integer.parseInt(scanner.nextLine());
+        int open=0;
+        int closed=0;
+        int unbalanced_flag=0;
+        char important=' ';
+        int first_time=0;
+        for(int i=0;i<n;i++){
+            String input=scanner.nextLine();
+            if(input.equals("(")){
+                if(first_time==0) {
+                    first_time = 1;
+                    important='(';
+                    open++;
+                }else{
+                    if(important!='(') {
+                        important='(';
+                        open++;
+                    }else if(important=='('){
+                        unbalanced_flag++;
+                    }
+                }
+            }else if(input.equals(")")){
+                if(first_time==0) {
+                    first_time = 1;
+                    important=')';
+                    closed++;
+                }else{
+                    if(important!=')') {
+                        important=')';
+                        closed++;
+                    }else if(important==')'){
+                        unbalanced_flag++;
+                    }
+                }
+            }
+        }
+        if((unbalanced_flag>=1)||(open!=closed)){
+            System.out.println("UNBALANCED");
+        }
+        if((open==closed)&&(unbalanced_flag==0)){
+            System.out.println("BALANCED");
+        }
+    }
+}
