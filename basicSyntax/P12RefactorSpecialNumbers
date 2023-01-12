@@ -1,0 +1,28 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P12RefactorSpecialNumbers {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int number = Integer.parseInt(scanner.nextLine());
+        int obshto = 0;
+        boolean toe = false;
+        for (int ch = 1; ch <= number; ch++) {
+            int current_num = ch;
+            while (current_num > 0) {
+                obshto += current_num % 10;
+                current_num = current_num / 10;
+            }
+            if((obshto == 5) || (obshto == 7) || (obshto == 11)){
+                System.out.printf("%d -> %s%n", ch,"True");
+            }else{
+                System.out.printf("%d -> %s%n", ch,"False");
+            }
+
+
+            obshto = 0;
+            toe=false;
+        }
+    }
+}
