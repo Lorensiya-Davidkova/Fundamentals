@@ -1,0 +1,19 @@
+package DataTypesAndVariables;
+
+import java.util.Scanner;
+
+public class P14DecryptingMessage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int sled_kolko_bukvi=Integer.parseInt(scanner.nextLine());
+        int n=Integer.parseInt(scanner.nextLine());
+        String word="";
+        for(int i=0;i<n;i++){
+            char letter=scanner.nextLine().charAt(0);
+            int ascii_code=letter+sled_kolko_bukvi;
+            char new_letter=(char)ascii_code;
+            word=word+new_letter;
+        }
+        System.out.println(word);
+    }
+}
