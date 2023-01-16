@@ -1,0 +1,122 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class P17TreasureHunt {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String vhod = scanner.nextLine();
+        String[] arr_vhod = vhod.split("\\|");
+        int counter = 0;
+        int new_element = 0;
+        boolean flag=false;
+        do {
+            String command = scanner.nextLine();
+            if(command.equals("Yohoho!")){
+                if(arr_vhod.length==0){
+                    System.out.println("Failed treasure hunt.");
+                }else{
+                    int sum_of_letters=0;
+                    for(int i=0;i< arr_vhod.length;i++){
+                        sum_of_letters=sum_of_letters+ arr_vhod[i].length();
+                    }
+                    double result=sum_of_letters/ (double)arr_vhod.length;
+                    System.out.printf("Average treasure gain: %.2f pirate credits.%n",result);
+                }
+                break;
+            }
+            String[] arr_command = command.split(" ");
+            if (arr_command[0].equals("Loot")) {
+                for(int i=1;i< arr_command.length;i++){
+                    for(int j=0;j< arr_vhod.length;j++){
+                        //System.out.printf("%s(arr_command[%d])   %s(arr_vhod[%d])%n",arr_command[i],i,arr_vhod[j],j);
+                        if(arr_command[i].equals(arr_vhod[j])==false){
+                            counter++;
+                        }
+                    }
+                    if(counter== arr_vhod.length){
+                        new_element++;
+                    }
+                    counter=0;
+                }
+                String[] new_elements=new String[new_element];
+                int counter1=0;
+                int index=0;
+                for(int i=1;i< arr_command.length;i++){
+                    for(int j=0;j< arr_vhod.length;j++){
+                        //System.out.printf("%s(arr_command[%d])   %s(arr_vhod[%d])%n",arr_command[i],i,arr_vhod[j],j);
+                        if(arr_command[i].equals(arr_vhod[j])==false){
+                            counter1++;
+                        }
+                    }
+                    if(counter1== arr_vhod.length){
+                        new_elements[index]=arr_command[i];
+                        index++;
+                    }
+                    counter1=0;
+                }
+                new_element=0;
+                //TUK
+                String[] dublicate_vhod=new String[arr_vhod.length];
+                for(int i=0;i< arr_vhod.length;i++){
+                    dublicate_vhod[i]=arr_vhod[i];
+                }
+                arr_vhod=new String[dublicate_vhod.length+new_elements.length];
+                for(int i=0;i<new_elements.length;i++){
+                    arr_vhod[i]=new_elements[new_elements.length-(i+1)];
+                }
+                for(int j=new_elements.length;j< arr_vhod.length;j++){
+                    arr_vhod[j]=dublicate_vhod[j-new_elements.length];
+                }
+            }else if(arr_command[0].equals("Drop")){
+                int index_to_drop=Integer.parseInt(arr_command[1]);
+                if(index_to_drop<0 || index_to_drop> arr_vhod.length-1){
+                    continue;
+                }else{
+                    String Q=arr_vhod[index_to_drop];
+                    for(int i=index_to_drop;i< arr_vhod.length-1;i++){
+                        arr_vhod[i]=arr_vhod[i+1];
+                    }
+                    arr_vhod[arr_vhod.length-1]=Q;
+                }
+            }else if(arr_command[0].equals("Steal")){
+                int steal_count=Integer.parseInt(arr_command[1]);
+                if(steal_count< arr_vhod.length) {
+                    String[] arr_steal = new String[steal_count];
+                    int Q = arr_vhod.length - steal_count;
+                    for (int i = Q; i < arr_vhod.length; i++) {
+                        arr_steal[i - Q] = arr_vhod[i];
+                    }
+                    for (int i = 0; i < arr_steal.length; i++) {
+                        if(i==arr_steal.length-1){
+                            System.out.printf("%s%n",arr_steal[i]);
+                        }else {
+                            System.out.printf("%s, ", arr_steal[i]);
+                        }
+                    }
+                    String[] arr_dublicate = new String[arr_vhod.length];
+                    for (int i = 0; i < arr_vhod.length; i++) {
+                        arr_dublicate[i] = arr_vhod[i];
+                    }
+                    arr_vhod = new String[arr_dublicate.length - steal_count];
+                    for (int i = 0; i < arr_vhod.length; i++) {
+                        arr_vhod[i] = arr_dublicate[i];
+                    }
+                }else if(steal_count>= arr_vhod.length){
+                    String[] arr_steal = new String[arr_vhod.length];
+                    for(int i=0;i< arr_vhod.length;i++){
+                        arr_steal[i]=arr_vhod[i];
+                    }
+                    arr_vhod=new String[0];
+                    for(int i=0;i< arr_steal.length;i++) {
+                        if (i == arr_steal.length - 1) {
+                            System.out.printf("%s%n", arr_steal[i]);
+                        } else {
+                            System.out.printf("%s, ", arr_steal[i]);
+                        }
+                    }
+                }
+            }
+        } while (true);
+    }
+}
