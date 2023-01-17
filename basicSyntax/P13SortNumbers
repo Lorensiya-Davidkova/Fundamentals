@@ -1,0 +1,29 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P13SortNumbers {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int[] myArr=new int[3];
+        int Q=0;
+        for(int i=0;i<3;i++){
+            String num=scanner.nextLine();
+            int number=Integer.parseInt(num);
+            myArr[i]=number;
+        }
+        for(int i=0;i<myArr.length;i++){
+            for(int j=i+1;j< myArr.length;j++){
+                if(myArr[i]<myArr[j]){
+                    Q=myArr[i];
+                    myArr[i]=myArr[j];
+                    myArr[j]=Q;
+                }
+            }
+        }
+        for(int i=0;i< myArr.length;i++){
+            System.out.println(myArr[i]);
+        }
+
+    }
+}
