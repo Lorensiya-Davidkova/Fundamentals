@@ -1,0 +1,16 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P15ReverseString {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input_word = scanner.nextLine();
+        String reversed_string = "";
+        for (int i = input_word.length() - 1; i >= 0; i--) {
+            char letter = input_word.charAt(i);
+            reversed_string = reversed_string + letter;
+        }
+        System.out.println(reversed_string);
+    }
+}
