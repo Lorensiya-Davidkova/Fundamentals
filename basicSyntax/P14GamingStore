@@ -1,0 +1,95 @@
+package BasicSyntax;
+
+import java.util.Scanner;
+
+public class P14GamingStore {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String moneyS = scanner.nextLine();
+        double budjet = Double.parseDouble(moneyS);
+        double first_budjet = budjet;
+        do {
+            String game_name = scanner.nextLine();
+            if (game_name.equals("OutFall 4")) {
+                budjet = budjet - 39.99;
+                if (budjet == 0) {
+                    System.out.println("Bought OutFall 4");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 39.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought OutFall 4");
+                }
+            } else if (game_name.equals("CS: OG")) {
+                budjet = budjet - 15.99;
+                if (budjet == 0) {
+                    System.out.println("Bought CS: OG");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 15.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought CS: OG");
+                }
+            } else if (game_name.equals("Zplinter Zell")) {
+                budjet = budjet - 19.99;
+                if (budjet == 0) {
+                    System.out.println("Bought Zplinter Zell");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 19.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought Zplinter Zell");
+                }
+            } else if (game_name.equals("Honored 2")) {
+                budjet = budjet - 59.99;
+                if (budjet == 0) {
+                    System.out.println("Bought Honored 2");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 59.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought Honored 2");
+                }
+            } else if (game_name.equals("RoverWatch")) {
+                budjet = budjet - 29.99;
+                if (budjet == 0) {
+                    System.out.println("Bought RoverWatch");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 29.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought RoverWatch");
+                }
+            } else if (game_name.equals("RoverWatch Origins Edition")) {
+                budjet = budjet - 39.99;
+                if (budjet == 0) {
+                    System.out.println("Bought RoverWatch Origins Edition");
+                    System.out.println("Out of money!");
+                    break;
+                } else if (budjet < 0) {
+                    System.out.println("Too Expensive");
+                    budjet = budjet + 39.99;
+                } else if (budjet > 0) {
+                    System.out.println("Bought RoverWatch Origins Edition");
+                }
+            } else if (game_name.equals("Game Time")) {
+                double izharcheno = first_budjet - budjet;
+                double nalichno = budjet;
+                System.out.printf("Total spent: $%.2f. Remaining: $%.2f", izharcheno, nalichno);
+                break;
+            } else {
+                System.out.println("Not Found");
+            }
+        } while (true);
+    }
+}
