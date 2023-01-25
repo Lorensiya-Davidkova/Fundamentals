@@ -1,0 +1,27 @@
+package Methods;
+
+import java.util.Scanner;
+
+public class P21Grades {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        Double numForMethod=Double.parseDouble(scanner.nextLine());
+        System.out.println(GradeCalculator(numForMethod));
+
+    }
+    public static String GradeCalculator(Double grade){
+        String toReturn="";
+        if((grade>=2)&&(grade<=2.99)){
+            toReturn="Fail";
+        }else if((grade>=3)&&(grade<=3.49)){
+            toReturn="Poor";
+        }else if((grade>=3.50)&&(grade<=4.49)){
+            toReturn="Good";
+        }else if((grade>=4.50)&&(grade<=5.49)){
+            toReturn="Very good";
+        }else if((grade>=5.50)&&(grade<=6)){
+            toReturn="Excellent";
+        }
+        return toReturn;
+    }
+}
