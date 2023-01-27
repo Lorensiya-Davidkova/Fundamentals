@@ -1,0 +1,29 @@
+package TextProcessing;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class P12Furniture {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String text="";
+        do{
+            String current=scanner.nextLine();
+            if(current.equals("Purchase")){
+                break;
+            }
+            text=text+current;
+        }while(true);
+
+        String regex=">>(?<name>[A-za-z]+)<<(?<price>[0-9]+[\\.]?[0-9]*)!(?<broi>[0-9]+)";
+        Pattern pattern=Pattern.compile(regex);
+        Matcher matcher=pattern.matcher(text);
+
+        double sum=0;
+        System.out.println("Bought furniture:");
+        while(matcher.find()){
+            System.out.println(matcher.group("name"));
+            sum=sum+(Double.parseDouble(matcher.group("price"))*Integer.parseInt(matcher.group("broi")));
+        }
+        System.out.printf("Total money spend: %.2f",sum);
+    }
+}
