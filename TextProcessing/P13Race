@@ -1,0 +1,76 @@
+package TextProcessing;
+import java.util.*;
+public class P13Race {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        //G4e@55or%6g6!68e!!@
+        //A-Z(ascii) -> 65 to 90
+        //a-z(ascii) -> 97 to 122
+        //0-9(ascii) ->  48 to 57
+
+        HashMap<String, Integer> map=new HashMap<>();
+        String[] lineOfNames=scanner.nextLine().split(", ");
+        for(int i=0;i<lineOfNames.length;i++){
+            map.put(lineOfNames[i],0);
+        }
+        do {
+            String line = scanner.nextLine();
+            if(line.equals("end of race")){
+                break;
+            }
+            String name = "";
+            int distance = 0;
+            for (int i = 0; i < line.length(); i++) {
+                char current = line.charAt(i);
+                if ((current >= 65 && current <= 90) || (current >= 97 && current <= 122)) {
+                    name = name + current;
+                } else if (current >= 48 && current <= 57) {
+                    int digit = Integer.parseInt(String.valueOf(current));
+                    distance = distance + digit;
+                }
+            }
+            if(map.containsKey(name)){
+                int oldDistance=map.get(name);
+                int newDistance=oldDistance+distance;
+                map.put(name,newDistance);
+            }
+        }while(true);
+
+
+        List<Map.Entry<String, Integer> > list
+                = new LinkedList<Map.Entry<String, Integer> >(
+                map.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+        //System.out.println(list.get(0)); ->Bill=11
+
+        int place=1;
+        for(int i=list.size()-1;i> list.size()-4;i--){
+            String line= String.valueOf(list.get(i));
+            if(place==1) {
+                System.out.printf("%dst place: ", place);
+            }else if(place==2){
+                System.out.printf("%dnd place: ", place);
+            }else if(place==3){
+                System.out.printf("%drd place: ", place);
+            }
+            for(int j=0;j<line.length();j++){
+                char currentLetter=line.charAt(j);
+                if(currentLetter=='='){
+                    j=line.length()-2;
+                    break;
+                }else{
+                    System.out.printf("%c",line.charAt(j));
+                }
+            }
+            place++;
+            System.out.println();
+        }
+    }
+}
