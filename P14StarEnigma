@@ -1,0 +1,59 @@
+package TextProcessing;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class P14StarEnigma {
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        ArrayList<String> attackesPlanets=new ArrayList<>();
+        ArrayList<String> destroyedPlanets=new ArrayList<>();
+        String regex="[^\\@\\-\\!\\:\\>]*@(?<name>[A-Za-z]+)[^\\@\\-\\!\\:\\>]*:(?<population>[0-9]+)[^\\@\\-\\!\\:\\>]*!(?<type>[AD])![^\\@\\-\\!\\:\\>]*->(?<soldierCount>[0-9]+)[^\\@\\-\\!\\:\\>]*";
+        Pattern pattern=Pattern.compile(regex);
+
+        String ForMatcherToFind="";
+
+        int broi=Integer.parseInt(scanner.nextLine());
+        for(int j=0;j<broi;j++) {
+            String line = scanner.nextLine();
+            String dublicateLine = "";
+            int counter = 0;
+            for (int i = 0; i < line.length(); i++) {
+                if (line.charAt(i) == 's' || line.charAt(i) == 't' || line.charAt(i) == 'a' || line.charAt(i) == 'r' ||
+                        line.charAt(i) == 'S' || line.charAt(i) == 'T' || line.charAt(i) == 'A' || line.charAt(i) == 'R') {
+                    counter++;
+                }
+            }
+            for (int i = 0; i < line.length(); i++) {
+                char newLetter = (char) (line.charAt(i) - counter);
+                dublicateLine = dublicateLine + newLetter;
+            }
+            ForMatcherToFind = ForMatcherToFind + dublicateLine;
+        }
+
+        Matcher matcher=pattern.matcher(ForMatcherToFind);
+        while(matcher.find()){
+            String name=matcher.group("name");
+            String AttackType=matcher.group("type");
+            if(AttackType.equals("A")){
+                attackesPlanets.add(name);
+            }else if(AttackType.equals("D")){
+                destroyedPlanets.add(name);
+            }
+        }
+
+        System.out.println("Attacked planets: "+attackesPlanets.size());
+        Collections.sort(attackesPlanets);
+        for(int i=0;i<attackesPlanets.size();i++){
+            System.out.println("-> "+attackesPlanets.get(i));
+        }
+
+        System.out.println("Destroyed planets: "+destroyedPlanets.size());
+        Collections.sort(destroyedPlanets);
+        for(int i=0;i<destroyedPlanets.size();i++){
+            System.out.println("-> "+destroyedPlanets.get(i));
+        }
+
+    }
+}
