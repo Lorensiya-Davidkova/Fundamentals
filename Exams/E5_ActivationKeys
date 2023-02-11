@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+public class ActivationKeys {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+
+        String line=scanner.nextLine();
+        do{
+            String command=scanner.nextLine();
+            if(command.equals("Generate")){
+                System.out.println("Your activation key is: "+line);
+                break;
+            }
+            String[] arrCommand=command.split(">>>");
+            if(arrCommand[0].equals("Contains")){
+                String substring=arrCommand[1];
+                if(line.contains(substring)){
+                    System.out.println(line+" contains "+substring);
+                }else{
+                    System.out.println("Substring not found!");
+                }
+            }else if(arrCommand[0].equals("Flip")){
+                int startIndex=Integer.parseInt(arrCommand[2]);
+                int endIndex=Integer.parseInt(arrCommand[3]);
+                if(arrCommand[1].equals("Upper")){
+                    String nachalen=line.substring(startIndex,endIndex);
+                    String newNachalen=nachalen.toUpperCase();
+                    line=line.replace(nachalen,newNachalen);
+                }else if(arrCommand[1].equals("Lower")){
+                    String nachalen=line.substring(startIndex,endIndex);
+                    String newNachalen=nachalen.toLowerCase();
+                    line=line.replace(nachalen,newNachalen);
+                }
+                System.out.println(line);
+            }else if(arrCommand[0].equals("Slice")){
+                int startIndex=Integer.parseInt(arrCommand[1]);
+                int endIndex=Integer.parseInt(arrCommand[2]);
+                ArrayList<Character> arr=new ArrayList<>();
+                for(int i=0;i<line.length();i++){
+                    arr.add(line.charAt(i));
+                }
+                for(int p=0;p<endIndex-startIndex;p++){
+                    arr.remove(arr.get(startIndex));
+                }
+                String line1="";
+                for(int j=0;j<arr.size();j++){
+                    line1=line1+arr.get(j);
+                }
+                line=line1;
+                System.out.println(line);
+            }
+
+        }while(true);
+    }
+}
